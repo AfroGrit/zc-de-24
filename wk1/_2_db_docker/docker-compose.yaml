@@ -1,0 +1,22 @@
+services:
+  # PostgreSQL database service
+  pgdatabase:
+    image: postgres:16 # Use the version 13 of the official PostgreSQL image
+    environment:
+      - POSTGRES_USER=root # Set the PostgreSQL username to 'root'
+      - POSTGRES_PASSWORD=root # Set the PostgreSQL password to 'root'
+      - POSTGRES_DB=ny_taxi # Set the PostgreSQL database name to 'ny_taxi'
+    volumes:
+      # Mount the local directory './ny_taxi_data' to '/var/lib/postgresql/data' in the container
+      - "./ny_taxi_data:/var/lib/postgresql/data:rw"
+    ports:
+      - "5432:5432" # Map the host's port 5432 to the container's port 5432
+
+  # PgAdmin service for managing and querying the PostgreSQL database
+  pgadmin:
+    image: dpage/pgadmin4 # Use the official PgAdmin 4 image
+    environment:
+      - PGADMIN_DEFAULT_EMAIL=admin@admin.com # Set the default email for PgAdmin to 'admin@admin.com'
+      - PGADMIN_DEFAULT_PASSWORD=root # Set the default password for PgAdmin to 'root'
+    ports:
+      - "8080:80" # Map the host's port 8080 to the container's port 80
