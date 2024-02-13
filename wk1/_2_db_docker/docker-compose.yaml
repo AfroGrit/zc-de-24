@@ -1,7 +1,7 @@
 services:
   # PostgreSQL database service
   pgdatabase:
-    image: postgres:16 # Use the version 13 of the official PostgreSQL image
+    image: postgres:16.1-bullseye # Use the version 13 of the official PostgreSQL image
     environment:
       - POSTGRES_USER=root # Set the PostgreSQL username to 'root'
       - POSTGRES_PASSWORD=root # Set the PostgreSQL password to 'root'
