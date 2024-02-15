@@ -95,18 +95,18 @@ def main(params):
 
 if __name__ == '__main__':
     parser = argparse.ArgumentParser(description='Ingest CSV data to Postgres')
+    args_list = [
+        ('--user', 'user name for postgres'),
+        ('--password', 'password for postgres'),
+        ('--host', 'host for postgres'),
+        ('--port', 'port for postgres'),
+        ('--db', 'database name for postgres'),
+        ('--table_name', 'name of the table where we will write the results to'),
+        ('--url', 'url of the csv file')
+    ]
 
-    parser.add_argument('--user', required=True, help='user name for postgres')
-    parser.add_argument('--password', required=True,
-                        help='password for postgres')
-    parser.add_argument('--host', required=True, help='host for postgres')
-    parser.add_argument('--port', required=True, help='port for postgres')
-    parser.add_argument('--db', required=True,
-                        help='database name for postgres')
-    parser.add_argument('--table_name', required=True,
-                        help='name of the table where we will write the results to')
-    parser.add_argument('--url', required=True, help='url of the csv file')
+    for arg, help_text in args_list:
+        parser.add_argument(arg, required=True, help=help_text)
 
     args = parser.parse_args()
-
     main(args)
