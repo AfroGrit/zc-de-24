@@ -8,3 +8,10 @@ services:
       - "./ny_taxi_pg_data:/var/lib/postgresql/data:rw"
     ports:
       - "5432:5432"
+
+  pgadmin:
+    image: dpage/pgadmin4
+    env_file:
+      - pgadmin.env
+    ports:
+      - "8080:80"
